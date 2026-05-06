@@ -58,21 +58,42 @@ function convertText() {
 }
 
 function copyOutput() {
-    if (outputText.value.trim() === "") {
+    const text = outputText.value;
+    if (text.trim() === "") {
         showToast("No text to copy!", "error");
         return;
     }
 
-    navigator.clipboard.writeText(outputText.value).then(() => {
-        showToast("Copied to clipboard!");
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
-        // Fallback for older browsers
-        outputText.select();
-        document.execCommand("copy");
-        showToast("Copied to clipboard!");
-    });
+    // Try modern Clipboard API first
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast("Copied to clipboard!");
+        }).catch(err => {
+            console.error('Clipboard API failed:', err);
+            fallbackCopy();
+        });
+    } else {
+        // Fallback to execCommand
+        fallbackCopy();
+    }
 }
+
+function fallbackCopy() {
+    try {
+        outputText.select();
+        outputText.setSelectionRange(0, 99999); // For mobile devices
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showToast("Copied to clipboard!");
+        } else {
+            showToast("Copy failed. Please copy manually.", "error");
+        }
+    } catch (err) {
+        console.error('Fallback copy failed:', err);
+        showToast("Copy failed. Please copy manually.", "error");
+    }
+}
+
 
 function clearText() {
     unicodeInput.value = "";
