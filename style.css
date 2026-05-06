@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans Sinhala", Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #020617, #111827, #312e81);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.app {
+    width: 92%;
+    max-width: 950px;
+    padding: 30px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #cbd5e1;
+}
+
+.converter-box {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(16px);
+}
+
+label {
+    display: block;
+    margin: 15px 0 8px;
+    font-weight: 700;
+}
+
+textarea {
+    width: 100%;
+    height: 180px;
+    padding: 18px;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    resize: vertical;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.97);
+    color: #111827;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+}
+
+select,
+button {
+    border: none;
+    outline: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+select {
+    background: #ffffff;
+    color: #111827;
+}
+
+button {
+    cursor: pointer;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: white;
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(99, 102, 241, 0.45);
+}
+
+.hint {
+    margin-top: 16px;
+    color: #e2e8f0;
+    background: rgba(15, 23, 42, 0.65);
+    padding: 14px;
+    border-radius: 14px;
+}

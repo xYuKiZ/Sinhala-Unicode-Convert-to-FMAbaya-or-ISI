@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinhala Unicode to FM Abhaya Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+    <div class="header">
+        <h1>Sinhala Unicode Converter</h1>
+        <p>Unicode Sinhala text එක FM Abhaya legacy font text එකට convert කරන්න.</p>
+    </div>
+
+    <div class="converter-box">
+        <label>Unicode Sinhala Text</label>
+        <textarea id="unicodeInput" placeholder="මෙතන Sinhala Unicode text paste කරන්න..."></textarea>
+
+        <div class="actions">
+            <select id="styleSelect">
+                <option value="fm">FM Abhaya</option>
+                <option value="isi">ISI Font</option>
+            </select>
+
+            <button onclick="convertText()">Convert</button>
+            <button onclick="copyOutput()">Copy</button>
+            <button onclick="clearText()">Clear</button>
+        </div>
+
+        <label>Converted Output</label>
+        <textarea id="outputText" placeholder="Converted text..." readonly></textarea>
+
+        <p class="hint">
+            Output එක copy කරලා Word / Photoshop / CorelDraw වල paste කරලා font එක FM Abhaya ලෙස select කරන්න.
+        </p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
