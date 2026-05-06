@@ -2,40 +2,78 @@
 <html lang="si">
 <head>
     <meta charset="UTF-8">
-    <title>Sinhala Unicode to FM Abhaya Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhala Unicode to Legacy Font Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+Sinhala:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
-    <div class="header">
-        <h1>Sinhala Unicode Converter</h1>
-        <p>Unicode Sinhala text එක FM Abhaya legacy font text එකට convert කරන්න.</p>
-    </div>
-
-    <div class="converter-box">
-        <label>Unicode Sinhala Text</label>
-        <textarea id="unicodeInput" placeholder="මෙතන Sinhala Unicode text paste කරන්න..."></textarea>
-
-        <div class="actions">
-            <select id="styleSelect">
-                <option value="fm">FM Abhaya</option>
-                <option value="isi">ISI Font</option>
-            </select>
-
-            <button onclick="convertText()">Convert</button>
-            <button onclick="copyOutput()">Copy</button>
-            <button onclick="clearText()">Clear</button>
+<div class="app-container">
+    <header class="main-header">
+        <div class="logo-area">
+            <div class="icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17-5-5 5-5"/><path d="m18 17-5-5 5-5"/></svg>
+            </div>
+            <h1>Sinhala<span>Converter</span></h1>
         </div>
+        <p>Convert Unicode Sinhala text to FM Abhaya or ISI legacy fonts instantly.</p>
+    </header>
 
-        <label>Converted Output</label>
-        <textarea id="outputText" placeholder="Converted text..." readonly></textarea>
+    <main class="converter-grid">
+        <section class="input-section">
+            <div class="section-header">
+                <label for="unicodeInput">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                    Unicode Input
+                </label>
+                <span class="char-count" id="charCount">0 characters</span>
+            </div>
+            <textarea id="unicodeInput" placeholder="මෙතන Sinhala Unicode text paste කරන්න..."></textarea>
+        </section>
 
-        <p class="hint">
-            Output එක copy කරලා Word / Photoshop / CorelDraw වල paste කරලා font එක FM Abhaya ලෙස select කරන්න.
-        </p>
-    </div>
+        <section class="controls-section">
+            <div class="control-group">
+                <label>Target Font Style</label>
+                <div class="select-wrapper">
+                    <select id="styleSelect">
+                        <option value="fm">FM Abhaya</option>
+                        <option value="isi">ISI Font</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="button-row">
+                <button onclick="copyOutput()" class="btn-secondary" title="Copy Output">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    Copy
+                </button>
+                <button onclick="clearText()" class="btn-ghost" title="Clear All">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                    Clear
+                </button>
+            </div>
+        </section>
+
+        <section class="output-section">
+            <div class="section-header">
+                <label for="outputText">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    Legacy Output
+                </label>
+            </div>
+            <textarea id="outputText" placeholder="Converted text appears here..." readonly></textarea>
+        </section>
+    </main>
+
+    <footer class="info-footer">
+        <p><strong>Pro Tip:</strong> After copying, paste into Word/Photoshop and select <strong>FM Abhaya</strong> or <strong>ISI</strong> font to see the Sinhala characters correctly.</p>
+    </footer>
 </div>
+
+<div id="toast" class="toast">Copied to clipboard!</div>
 
 <script src="script.js"></script>
 </body>
